@@ -10,7 +10,6 @@ I am a student of 42 Schools. I am always in love with coding.
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=mehmetdonmezz&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=mehmetdonmezz&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=mehmetdonmezz&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 ### ✍️ Random Dev Quote
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
