@@ -1,8 +1,14 @@
+<h1 align="center">💫 About Me</h1><br>
+
 # 💫 About Me:
+<h2 align="center">I am a student of 42 Schools. I am always in love with coding.</h2><br>
 I am a student of 42 Schools. I am always in love with coding.
 
-
+<h1 align="center">🌐 Socials</h1><br>
 ## 🌐 Socials:
+<a href="https://instagram.com/n4zerati">
+
+<img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"></a>
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/rootjester) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/mehmetdonwez) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/mehmet-dönmez-b38503357) 
 
 # 💻 Tech Stack:
