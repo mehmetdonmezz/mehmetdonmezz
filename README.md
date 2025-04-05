@@ -1,4 +1,4 @@
-<h1 align="center">💫 About Me</h1><br>
+<h1 align="center">💫 About Me</h1>
 
 <h2 align="center">I am a student of 42 Schools. I am always in love with coding.</h2>
 
