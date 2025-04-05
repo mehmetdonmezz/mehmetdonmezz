@@ -2,7 +2,7 @@
 
 <h2 align="center">I am a student of 42 Schools. I am always in love with coding.</h2><br>
 
-<h1 align="center">🌐 Socials</h1>
+<h1 align="center">🌐Socials</h1>
 <p align="center">
   <a href="https://instagram.com/n4zerati">
     <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"  height="35">
