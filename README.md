@@ -32,14 +32,19 @@
     <img src="https://nirzak-streak-stats.vercel.app/?user=mehmetdonmezz&theme=dark&hide_border=false" > <br/>
 </p>
 
+<h1 align="center">✍️ Random Dev Quote</h1><br>
+<p align="center">
+    <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox" > <br/>
+</p>
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
+<h1 align="center">🔝 Top Contributed Repo</h1><br>
+<p align="center">
+    <img src="https://github-contributor-stats.vercel.app/api?username=mehmetdonmezz&limit=5&theme=dark&combine_all_yearly_contributions=true" > <br/>
+</p>
 
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=mehmetdonmezz&limit=5&theme=dark&combine_all_yearly_contributions=true)
 
----
-[![](https://visitcount.itsvg.in/api?id=mehmetdonmezz&icon=7&color=3)](https://visitcount.itsvg.in)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Sutil/Sutil/2b2fad3bf54522bb30c8c170591fc68ff51b69e6/github-contribution-grid-snake2.svg" > <br/>
+</p>
 
-![mishmanners snake gif](https://raw.githubusercontent.com/Sutil/Sutil/2b2fad3bf54522bb30c8c170591fc68ff51b69e6/github-contribution-grid-snake2.svg)
+
