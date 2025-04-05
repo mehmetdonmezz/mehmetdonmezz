@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://instagram.com/n4zerati">
-    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white" >
+    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"  height="20">
   </a>
 </p>
 
