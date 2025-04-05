@@ -4,7 +4,7 @@
 
 <h1 align="center">🌐Socials</h1>
 <p align="center">
-  <a href="https://instagram.com/n4zerati">
+  <a href="https://instagram.com/mehmetdonwez">
     <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"  height="35">
   </a>
 </p>
