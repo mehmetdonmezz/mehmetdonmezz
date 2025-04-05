@@ -6,9 +6,9 @@ I am a student of 42 Schools. I am always in love with coding.
 
 <h1 align="center">🌐 Socials</h1><br>
 ## 🌐 Socials:
-<center><a href="https://instagram.com/n4zerati">
+<div><a href="https://instagram.com/n4zerati">
 
-<img   aling  src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"></a></center>
+<img   aling  src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"></a></div>
 
 
 # 💻 Tech Stack:
