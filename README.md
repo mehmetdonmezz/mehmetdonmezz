@@ -8,7 +8,7 @@ I am a student of 42 Schools. I am always in love with coding.
 ## 🌐 Socials:
 <p align="center">
   <a href="[https://getbootstrap.com/](https://instagram.com/n4zerati)">
-    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"  width="50" height="50">
+    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white"  width="150" height="50">
   </a>
 </p>
 <div><a href="https://instagram.com/n4zerati">
