@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState('Tümü');
+  const { addToCart, getTotalItems } = useCart();
 
   // Sahte ürün verisi
   const products = [
@@ -107,9 +109,9 @@ export default function ProductsPage() {
               <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">İletişim</a>
             </nav>
             <div className="flex items-center space-x-4">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Sepet (0)
-              </button>
+              <a href="/cart" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Sepet ({getTotalItems()})
+              </a>
             </div>
           </div>
         </div>
@@ -172,6 +174,17 @@ export default function ProductsPage() {
                 </div>
                 
                 <button 
+                  onClick={() => {
+                    if (product.inStock) {
+                      addToCart({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        category: product.category,
+                        image: product.image
+                      });
+                    }
+                  }}
                   className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors ${
                     product.inStock 
                       ? 'bg-blue-600 text-white hover:bg-blue-700' 

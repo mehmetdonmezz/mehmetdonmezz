@@ -1,6 +1,11 @@
+'use client';
+
 import Image from "next/image";
+import { useCart } from '@/context/CartContext';
 
 export default function Home() {
+  const { getTotalItems } = useCart();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       {/* Header */}
@@ -20,9 +25,9 @@ export default function Home() {
               <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">İletişim</a>
             </nav>
             <div className="flex items-center space-x-4">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Sepet (0)
-              </button>
+              <a href="/cart" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Sepet ({getTotalItems()})
+              </a>
             </div>
           </div>
         </div>
