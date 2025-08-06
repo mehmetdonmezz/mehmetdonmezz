@@ -175,6 +175,8 @@ export default function ProductsPage() {
                 
                 <button 
                   onClick={() => {
+                    console.log('Button clicked!', product.name);
+                    alert('Butona tıklandı: ' + product.name);
                     if (product.inStock) {
                       addToCart({
                         id: product.id,
