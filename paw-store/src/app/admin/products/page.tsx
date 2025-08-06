@@ -23,7 +23,9 @@ export default function AdminProductsPage() {
 
   // Admin kontrolü
   useEffect(() => {
+    console.log('Admin products page - isAdmin:', isAdmin);
     if (!isAdmin) {
+      console.log('Not admin, redirecting to login');
       router.push('/admin/login');
     }
   }, [isAdmin, router]);
