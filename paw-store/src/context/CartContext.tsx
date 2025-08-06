@@ -57,27 +57,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Sepete ekleme
   const addToCart = (product: Omit<CartItem, 'quantity'>) => {
-    console.log('Adding to cart:', product);
-    setItems(currentItems => {
-      console.log('Current items before:', currentItems);
-      const existingItem = currentItems.find(item => item.id === product.id);
-      
-      let newItems;
-      if (existingItem) {
-        // Ürün zaten sepette, miktarı artır
-        newItems = currentItems.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        // Yeni ürün, sepete ekle
-        newItems = [...currentItems, { ...product, quantity: 1 }];
-      }
-      
-      console.log('New items after:', newItems);
-      return newItems;
-    });
+    console.log('🛒 CartContext - Adding to cart:', product);
+    console.log('🛒 Current items before:', items);
+    
+    const newItem = { ...product, quantity: 1 };
+    const existingItemIndex = items.findIndex(item => item.id === product.id);
+    
+    let newItems;
+    if (existingItemIndex >= 0) {
+      // Ürün zaten sepette, miktarı artır
+      newItems = [...items];
+      newItems[existingItemIndex].quantity += 1;
+      console.log('🛒 Existing item, increased quantity');
+    } else {
+      // Yeni ürün, sepete ekle
+      newItems = [...items, newItem];
+      console.log('🛒 New item added');
+    }
+    
+    console.log('🛒 New items after:', newItems);
+    setItems(newItems);
   };
 
   // Sepetten çıkarma

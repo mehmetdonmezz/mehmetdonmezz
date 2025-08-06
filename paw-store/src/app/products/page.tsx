@@ -175,8 +175,11 @@ export default function ProductsPage() {
                 
                 <button 
                   onClick={() => {
-                    console.log('Button clicked!', product.name);
+                    console.log('🔥 BUTTON CLICKED!', product.name);
+                    alert('🚨 Test: ' + product.name + ' butonuna tıklandı!');
+                    
                     if (product.inStock) {
+                      console.log('🛒 Adding to cart...', product);
                       addToCart({
                         id: product.id,
                         name: product.name,
@@ -187,14 +190,20 @@ export default function ProductsPage() {
                       alert('✅ ' + product.name + ' sepete eklendi!');
                     }
                   }}
-                  className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors ${
-                    product.inStock 
-                      ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
+                  style={{
+                    width: '100%',
+                    marginTop: '16px',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    backgroundColor: product.inStock ? '#2563eb' : '#d1d5db',
+                    color: product.inStock ? 'white' : '#6b7280',
+                    border: 'none'
+                  }}
                   disabled={!product.inStock}
                 >
-                  {product.inStock ? 'Sepete Ekle' : 'Stokta Yok'}
+                  {product.inStock ? '🛒 SEPETE EKLE' : '❌ STOKTA YOK'}
                 </button>
               </div>
             </div>
