@@ -14,9 +14,9 @@ export default function Home() {
               <h1 className="text-2xl font-bold text-gray-900">PawStore</h1>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Ana Sayfa</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Ürünler</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Kategoriler</a>
+              <a href="/" className="text-blue-600 font-medium">Ana Sayfa</a>
+              <a href="/products" className="text-gray-700 hover:text-blue-600 font-medium">Ürünler</a>
+              <a href="/products" className="text-gray-700 hover:text-blue-600 font-medium">Kategoriler</a>
               <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">İletişim</a>
             </nav>
             <div className="flex items-center space-x-4">
@@ -40,12 +40,12 @@ export default function Home() {
             Hızlı teslimat ve güvenli alışveriş garantisi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+            <a href="/products" className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
               Ürünleri İncele
-            </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors">
+            </a>
+            <a href="/products" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors inline-block">
               Kategoriler
-            </button>
+            </a>
           </div>
         </div>
       </section>
