@@ -173,22 +173,11 @@ export default function ProductsPage() {
                   </div>
                 </div>
                 
-                <button 
+                {/* Test Butonu */}
+                <div 
                   onClick={() => {
-                    console.log('🔥 BUTTON CLICKED!', product.name);
-                    alert('🚨 Test: ' + product.name + ' butonuna tıklandı!');
-                    
-                    if (product.inStock) {
-                      console.log('🛒 Adding to cart...', product);
-                      addToCart({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        category: product.category,
-                        image: product.image
-                      });
-                      alert('✅ ' + product.name + ' sepete eklendi!');
-                    }
+                    console.log('🔥 DIV CLICKED!', product.name);
+                    alert('🚨 DIV Test: ' + product.name + ' tıklandı!');
                   }}
                   style={{
                     width: '100%',
@@ -197,13 +186,45 @@ export default function ProductsPage() {
                     borderRadius: '8px',
                     fontWeight: 'bold',
                     cursor: 'pointer',
-                    backgroundColor: product.inStock ? '#2563eb' : '#d1d5db',
-                    color: product.inStock ? 'white' : '#6b7280',
-                    border: 'none'
+                    backgroundColor: '#dc2626',
+                    color: 'white',
+                    textAlign: 'center',
+                    fontSize: '16px',
+                    userSelect: 'none'
                   }}
-                  disabled={!product.inStock}
                 >
-                  {product.inStock ? '🛒 SEPETE EKLE' : '❌ STOKTA YOK'}
+                  🔴 TEST BUTONU (DIV)
+                </div>
+
+                <button 
+                  onClick={() => {
+                    console.log('🔥 BUTTON CLICKED!', product.name);
+                    alert('🚨 Button Test: ' + product.name + ' butonuna tıklandı!');
+                    
+                    console.log('🛒 Adding to cart...', product);
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      category: product.category,
+                      image: product.image
+                    });
+                    alert('✅ ' + product.name + ' sepete eklendi!');
+                  }}
+                  style={{
+                    width: '100%',
+                    marginTop: '8px',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    backgroundColor: '#2563eb',
+                    color: 'white',
+                    border: 'none',
+                    fontSize: '16px'
+                  }}
+                >
+                  🛒 SEPETE EKLE
                 </button>
               </div>
             </div>
