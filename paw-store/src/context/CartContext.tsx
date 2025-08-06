@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Sepet item tipi
 export interface CartItem {
@@ -29,23 +29,54 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 // Provider component
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // localStorage'dan veri yükle
+  useEffect(() => {
+    try {
+      const savedItems = localStorage.getItem('paw-store-cart');
+      if (savedItems) {
+        setItems(JSON.parse(savedItems));
+      }
+    } catch (error) {
+      console.error('Error loading cart from localStorage:', error);
+    }
+    setIsLoaded(true);
+  }, []);
+
+  // localStorage'a kaydet
+  useEffect(() => {
+    if (isLoaded) {
+      try {
+        localStorage.setItem('paw-store-cart', JSON.stringify(items));
+      } catch (error) {
+        console.error('Error saving cart to localStorage:', error);
+      }
+    }
+  }, [items, isLoaded]);
 
   // Sepete ekleme
   const addToCart = (product: Omit<CartItem, 'quantity'>) => {
+    console.log('Adding to cart:', product);
     setItems(currentItems => {
+      console.log('Current items before:', currentItems);
       const existingItem = currentItems.find(item => item.id === product.id);
       
+      let newItems;
       if (existingItem) {
         // Ürün zaten sepette, miktarı artır
-        return currentItems.map(item =>
+        newItems = currentItems.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
         // Yeni ürün, sepete ekle
-        return [...currentItems, { ...product, quantity: 1 }];
+        newItems = [...currentItems, { ...product, quantity: 1 }];
       }
+      
+      console.log('New items after:', newItems);
+      return newItems;
     });
   };
 
