@@ -2,86 +2,12 @@
 
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import { useProducts } from '@/context/ProductContext';
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState('Tümü');
   const { addToCart, getTotalItems } = useCart();
-
-  // Sahte ürün verisi
-  const products = [
-    {
-      id: 1,
-      name: "Royal Canin Köpek Maması",
-      price: 299.99,
-      category: "Köpek",
-      image: "🐕",
-      description: "Yetişkin köpekler için dengeli beslenme",
-      inStock: true
-    },
-    {
-      id: 2,
-      name: "Whiskas Kedi Maması",
-      price: 89.99,
-      category: "Kedi",
-      image: "🐱",
-      description: "Tavuklu kedi maması, 2kg",
-      inStock: true
-    },
-    {
-      id: 3,
-      name: "Kong Köpek Oyuncağı",
-      price: 45.00,
-      category: "Köpek",
-      image: "🎾",
-      description: "Dayanıklı kauçuk oyuncak",
-      inStock: true
-    },
-    {
-      id: 4,
-      name: "Kedi Tırmalama Tahtası",
-      price: 120.00,
-      category: "Kedi",
-      image: "🪵",
-      description: "Doğal sisal malzemeli",
-      inStock: false
-    },
-    {
-      id: 5,
-      name: "Kuş Kafesi Premium",
-      price: 350.00,
-      category: "Kuş",
-      image: "🏠",
-      description: "Büyük boy, paslanmaz çelik",
-      inStock: true
-    },
-    {
-      id: 6,
-      name: "Akvaryum Filtresi",
-      price: 180.00,
-      category: "Akvaryum",
-      image: "🔧",
-      description: "100L kapasiteye kadar",
-      inStock: true
-    },
-    {
-      id: 7,
-      name: "Köpek Tasması Premium",
-      price: 65.00,
-      category: "Köpek",
-      image: "🦴",
-      description: "Deri tasma, ayarlanabilir",
-      inStock: true
-    },
-    {
-      id: 8,
-      name: "Kedi Kumu Kaliteli",
-      price: 25.99,
-      category: "Kedi",
-      image: "📦",
-      description: "Topaklanan, 10L",
-      inStock: true
-    }
-  ];
+  const { products } = useProducts();
 
   const categories = ["Tümü", "Köpek", "Kedi", "Kuş", "Akvaryum"];
 
