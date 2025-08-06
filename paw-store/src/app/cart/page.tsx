@@ -4,9 +4,6 @@ import { useCart } from '@/context/CartContext';
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems, clearCart } = useCart();
-  
-  console.log('Cart page items:', items);
-  console.log('Total items:', getTotalItems());
 
   if (items.length === 0) {
     return (

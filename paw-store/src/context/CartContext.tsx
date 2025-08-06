@@ -57,9 +57,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Sepete ekleme
   const addToCart = (product: Omit<CartItem, 'quantity'>) => {
-    console.log('🛒 CartContext - Adding to cart:', product);
-    console.log('🛒 Current items before:', items);
-    
     const newItem = { ...product, quantity: 1 };
     const existingItemIndex = items.findIndex(item => item.id === product.id);
     
@@ -68,14 +65,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       // Ürün zaten sepette, miktarı artır
       newItems = [...items];
       newItems[existingItemIndex].quantity += 1;
-      console.log('🛒 Existing item, increased quantity');
     } else {
       // Yeni ürün, sepete ekle
       newItems = [...items, newItem];
-      console.log('🛒 New item added');
     }
     
-    console.log('🛒 New items after:', newItems);
     setItems(newItems);
   };
 

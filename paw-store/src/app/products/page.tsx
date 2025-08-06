@@ -173,35 +173,8 @@ export default function ProductsPage() {
                   </div>
                 </div>
                 
-                {/* Test Butonu */}
-                <div 
-                  onClick={() => {
-                    console.log('🔥 DIV CLICKED!', product.name);
-                    alert('🚨 DIV Test: ' + product.name + ' tıklandı!');
-                  }}
-                  style={{
-                    width: '100%',
-                    marginTop: '16px',
-                    padding: '12px',
-                    borderRadius: '8px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    backgroundColor: '#dc2626',
-                    color: 'white',
-                    textAlign: 'center',
-                    fontSize: '16px',
-                    userSelect: 'none'
-                  }}
-                >
-                  🔴 TEST BUTONU (DIV)
-                </div>
-
                 <button 
                   onClick={() => {
-                    console.log('🔥 BUTTON CLICKED!', product.name);
-                    alert('🚨 Button Test: ' + product.name + ' butonuna tıklandı!');
-                    
-                    console.log('🛒 Adding to cart...', product);
                     addToCart({
                       id: product.id,
                       name: product.name,
@@ -209,22 +182,15 @@ export default function ProductsPage() {
                       category: product.category,
                       image: product.image
                     });
-                    alert('✅ ' + product.name + ' sepete eklendi!');
                   }}
-                  style={{
-                    width: '100%',
-                    marginTop: '8px',
-                    padding: '12px',
-                    borderRadius: '8px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    backgroundColor: '#2563eb',
-                    color: 'white',
-                    border: 'none',
-                    fontSize: '16px'
-                  }}
+                  className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors ${
+                    product.inStock 
+                      ? 'bg-blue-600 text-white hover:bg-blue-700 cursor-pointer' 
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                  disabled={!product.inStock}
                 >
-                  🛒 SEPETE EKLE
+                  {product.inStock ? 'Sepete Ekle' : 'Stokta Yok'}
                 </button>
               </div>
             </div>
