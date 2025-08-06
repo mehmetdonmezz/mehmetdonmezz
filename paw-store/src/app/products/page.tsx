@@ -176,7 +176,6 @@ export default function ProductsPage() {
                 <button 
                   onClick={() => {
                     console.log('Button clicked!', product.name);
-                    alert('Butona tıklandı: ' + product.name);
                     if (product.inStock) {
                       addToCart({
                         id: product.id,
@@ -185,6 +184,7 @@ export default function ProductsPage() {
                         category: product.category,
                         image: product.image
                       });
+                      alert('✅ ' + product.name + ' sepete eklendi!');
                     }
                   }}
                   className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors ${
