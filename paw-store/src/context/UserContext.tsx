@@ -102,23 +102,101 @@ const mockUsers: Array<User & {password: string}> = [
     ],
     orders: [
       {
-        id: 1001,
-        date: '2024-01-05',
+        id: 'ORD001',
+        date: '2024-01-05T14:30:00Z',
         status: 'delivered',
-        total: 389.98,
+        total: 284.97,
         items: [
-          {productId: 1, productName: 'Royal Canin Köpek Maması', quantity: 1, price: 299.99},
-          {productId: 3, productName: 'Kong Köpek Oyuncağı', quantity: 2, price: 45.00}
-        ]
+          {
+            id: 1,
+            name: 'Royal Canin Köpek Maması',
+            price: 199.99,
+            quantity: 1,
+            image: '🐕',
+            category: 'Köpek Maması'
+          },
+          {
+            id: 3,
+            name: 'Kong Köpek Oyuncağı',
+            price: 45.00,
+            quantity: 1,
+            image: '🎾',
+            category: 'Köpek Oyuncağı'
+          },
+          {
+            id: 5,
+            name: 'Köpek Tasması',
+            price: 39.98,
+            quantity: 1,
+            image: '🎀',
+            category: 'Köpek Aksesuarı'
+          }
+        ],
+        shippingAddress: {
+          id: '1',
+          title: 'Ev',
+          fullName: 'Ahmet Yılmaz',
+          phone: '+90 555 123 4567',
+          address: 'Ataşehir Mahallesi, Test Sokak No:5 Daire:3',
+          city: 'İstanbul',
+          district: 'Ataşehir',
+          postalCode: '34750',
+          isDefault: true
+        }
       },
       {
-        id: 1002,
-        date: '2024-01-10',
+        id: 'ORD002',
+        date: '2024-01-10T10:15:00Z',
         status: 'shipped',
         total: 89.99,
         items: [
-          {productId: 2, productName: 'Whiskas Kedi Maması', quantity: 1, price: 89.99}
-        ]
+          {
+            id: 2,
+            name: 'Whiskas Kedi Maması',
+            price: 89.99,
+            quantity: 1,
+            image: '🐱',
+            category: 'Kedi Maması'
+          }
+        ],
+        shippingAddress: {
+          id: '1',
+          title: 'Ev',
+          fullName: 'Ahmet Yılmaz',
+          phone: '+90 555 123 4567',
+          address: 'Ataşehir Mahallesi, Test Sokak No:5 Daire:3',
+          city: 'İstanbul',
+          district: 'Ataşehir',
+          postalCode: '34750',
+          isDefault: true
+        }
+      },
+      {
+        id: 'ORD003',
+        date: '2024-01-15T16:45:00Z',
+        status: 'pending',
+        total: 159.98,
+        items: [
+          {
+            id: 4,
+            name: 'Kedi Kumu',
+            price: 79.99,
+            quantity: 2,
+            image: '🏺',
+            category: 'Kedi Bakımı'
+          }
+        ],
+        shippingAddress: {
+          id: '1',
+          title: 'Ev',
+          fullName: 'Ahmet Yılmaz',
+          phone: '+90 555 123 4567',
+          address: 'Ataşehir Mahallesi, Test Sokak No:5 Daire:3',
+          city: 'İstanbul',
+          district: 'Ataşehir',
+          postalCode: '34750',
+          isDefault: true
+        }
       }
     ]
   }
