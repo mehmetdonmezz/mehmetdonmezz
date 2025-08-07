@@ -25,10 +25,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const adminStatus = localStorage.getItem('paw-store-admin');
-      console.log('Admin status from localStorage:', adminStatus);
       if (adminStatus === 'true') {
         setIsAdmin(true);
-        console.log('Admin logged in from localStorage');
       }
     } catch (error) {
       console.error('Error reading admin status:', error);
@@ -39,14 +37,11 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
   // Admin girişi
   const login = (password: string): boolean => {
-    console.log('Login attempt with password:', password);
     if (password === ADMIN_PASSWORD) {
       setIsAdmin(true);
       localStorage.setItem('paw-store-admin', 'true');
-      console.log('Admin login successful');
       return true;
     }
-    console.log('Admin login failed');
     return false;
   };
 
