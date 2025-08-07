@@ -170,9 +170,12 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <button className="w-full bg-blue-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
-                Sipariş Ver
-              </button>
+              <a 
+                href="/checkout"
+                className="w-full bg-blue-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors mb-4 text-center block"
+              >
+                💳 Sipariş Ver
+              </a>
               
               <a 
                 href="/products" 
