@@ -5,6 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 // Admin context tipi
 interface AdminContextType {
   isAdmin: boolean;
+  isLoading: boolean;
   login: (password: string) => boolean;
   logout: () => void;
 }
@@ -18,6 +19,7 @@ const ADMIN_PASSWORD = 'admin123';
 // Provider component
 export function AdminProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // LocalStorage'dan admin durumunu yükle
   useEffect(() => {
@@ -30,6 +32,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       }
     } catch (error) {
       console.error('Error reading admin status:', error);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -54,6 +58,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
   const value = {
     isAdmin,
+    isLoading,
     login,
     logout,
   };

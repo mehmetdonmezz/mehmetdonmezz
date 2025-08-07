@@ -6,16 +6,16 @@ import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 
 export default function AdminDashboard() {
-  const { isAdmin, logout } = useAdmin();
+  const { isAdmin, isLoading, logout } = useAdmin();
   const { items: cartItems } = useCart();
   const router = useRouter();
 
   // Admin kontrolü
   useEffect(() => {
-    if (!isAdmin) {
+    if (!isLoading && !isAdmin) {
       router.push('/admin/login');
     }
-  }, [isAdmin, router]);
+  }, [isAdmin, isLoading, router]);
 
   // Sahte veriler
   const stats = {
@@ -32,6 +32,19 @@ export default function AdminDashboard() {
     { id: 4, customer: 'Fatma Öz', product: 'Kuş Kafesi Premium', amount: 350.00, status: 'Beklemede' }
   ];
 
+  // Loading durumu
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Admin kontrolü
   if (!isAdmin) {
     return <div>Yönlendiriliyor...</div>;
   }

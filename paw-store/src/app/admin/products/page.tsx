@@ -6,7 +6,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { useProducts, Product } from '@/context/ProductContext';
 
 export default function AdminProductsPage() {
-  const { isAdmin, logout } = useAdmin();
+  const { isAdmin, isLoading, logout } = useAdmin();
   const { products, addProduct, updateProduct, deleteProduct } = useProducts();
   const router = useRouter();
   
@@ -23,12 +23,12 @@ export default function AdminProductsPage() {
 
   // Admin kontrolü
   useEffect(() => {
-    console.log('Admin products page - isAdmin:', isAdmin);
-    if (!isAdmin) {
+    console.log('Admin products page - isAdmin:', isAdmin, 'isLoading:', isLoading);
+    if (!isLoading && !isAdmin) {
       console.log('Not admin, redirecting to login');
       router.push('/admin/login');
     }
-  }, [isAdmin, router]);
+  }, [isAdmin, isLoading, router]);
 
   const categories = ['Köpek', 'Kedi', 'Kuş', 'Akvaryum'];
   const emojis = ['🐕', '🐱', '🐦', '🐠', '🎾', '🦴', '🪵', '🏠', '🔧', '📦', '🍖', '🧸'];
@@ -99,6 +99,19 @@ export default function AdminProductsPage() {
     }
   };
 
+  // Loading durumu
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Admin kontrolü
   if (!isAdmin) {
     return <div>Yönlendiriliyor...</div>;
   }
