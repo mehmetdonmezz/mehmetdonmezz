@@ -7,7 +7,7 @@ import { useCart } from '@/context/CartContext';
 
 export default function CheckoutPage() {
   const { user, isLoggedIn, isLoading } = useUser();
-  const { items, getTotalPrice, clearCart } = useCart();
+  const { items, getTotalPrice, clearCart, isLoaded } = useCart();
   const router = useRouter();
 
   const [step, setStep] = useState<'shipping' | 'payment' | 'review'>('shipping');
@@ -30,12 +30,12 @@ export default function CheckoutPage() {
     }
   }, [isLoggedIn, isLoading, router]);
 
-  // Sepet boşsa products sayfasına yönlendir
+  // Sepet boşsa products sayfasına yönlendir (sadece cart yüklendikten sonra)
   useEffect(() => {
-    if (items.length === 0) {
+    if (isLoaded && items.length === 0) {
       router.push('/products');
     }
-  }, [items, router]);
+  }, [items, isLoaded, router]);
 
   // Varsayılan adres seç
   useEffect(() => {
@@ -170,7 +170,7 @@ export default function CheckoutPage() {
   };
 
   // Loading durumunda
-  if (isLoading) {
+  if (isLoading || !isLoaded) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
   }
 
   // Giriş yapmamışsa veya sepet boşsa boş döndür (redirect olacak)
-  if (!isLoggedIn || items.length === 0) {
+  if (!isLoggedIn || (isLoaded && items.length === 0)) {
     return null;
   }
 
