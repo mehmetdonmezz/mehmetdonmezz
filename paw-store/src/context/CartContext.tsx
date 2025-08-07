@@ -21,6 +21,7 @@ interface CartContextType {
   clearCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
+  isLoaded: boolean;
 }
 
 // Context oluştur
@@ -115,6 +116,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     clearCart,
     getTotalItems,
     getTotalPrice,
+    isLoaded,
   };
 
   return (
