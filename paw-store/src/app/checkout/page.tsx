@@ -6,7 +6,7 @@ import { useUser } from '@/context/UserContext';
 import { useCart } from '@/context/CartContext';
 
 export default function CheckoutPage() {
-  const { user, isLoggedIn, isLoading } = useUser();
+  const { user, isLoggedIn, isLoading, createOrder } = useUser();
   const { items, getTotalPrice, clearCart, isLoaded } = useCart();
   const router = useRouter();
 
@@ -129,15 +129,33 @@ export default function CheckoutPage() {
       await new Promise(resolve => setTimeout(resolve, 3000));
       
       // Demo: 90% success rate
-      const success = Math.random() > 0.1;
+      const paymentSuccess = Math.random() > 0.1;
       
-      if (success) {
-        setSuccess('Ödeme başarılı! Siparişiniz alındı.');
-        clearCart();
-        
-        setTimeout(() => {
-          router.push('/profile/orders');
-        }, 2000);
+      if (paymentSuccess) {
+        // Seçili adresi al
+        const selectedAddr = getSelectedAddress();
+        if (!selectedAddr) {
+          throw new Error('Teslimat adresi seçilmedi');
+        }
+
+        // Sipariş oluştur
+        const orderResult = await createOrder({
+          items: items,
+          shippingAddress: selectedAddr,
+          paymentMethod: paymentMethod === 'card' ? `Kredi Kartı (**${cardData.number.slice(-4)})` : 'Banka Havalesi',
+          total: getTotalPrice()
+        });
+
+        if (orderResult.success) {
+          setSuccess(`Ödeme başarılı! Sipariş No: #${orderResult.orderId}`);
+          clearCart();
+          
+          setTimeout(() => {
+            router.push('/profile/orders');
+          }, 2000);
+        } else {
+          throw new Error(orderResult.message);
+        }
       } else {
         throw new Error('Ödeme işlemi başarısız. Lütfen tekrar deneyin.');
       }

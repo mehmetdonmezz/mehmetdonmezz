@@ -58,6 +58,7 @@ interface UserContextType {
   updateAddress: (id: number, address: Omit<Address, 'id'>) => Promise<{success: boolean, message: string}>;
   deleteAddress: (id: number) => Promise<{success: boolean, message: string}>;
   forgotPassword: (email: string) => Promise<{success: boolean, message: string}>;
+  createOrder: (orderData: {items: any[], shippingAddress: Address, paymentMethod: string, total: number}) => Promise<{success: boolean, message: string, orderId?: string}>;
 }
 
 // Kayıt verisi tipi
@@ -472,6 +473,53 @@ export function UserProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  // Sipariş oluşturma
+  const createOrder = async (orderData: {items: any[], shippingAddress: Address, paymentMethod: string, total: number}): Promise<{success: boolean, message: string, orderId?: string}> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (!user) {
+          resolve({success: false, message: 'Kullanıcı bulunamadı'});
+          return;
+        }
+
+        // Yeni sipariş ID'si oluştur
+        const orderId = `ORD${String(Date.now()).slice(-6)}`;
+        const currentDate = new Date().toISOString();
+
+        // Sipariş objesi oluştur
+        const newOrder: Order = {
+          id: orderId,
+          date: currentDate,
+          status: 'pending',
+          total: orderData.total,
+          items: orderData.items.map(item => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image,
+            category: item.category
+          })),
+          shippingAddress: orderData.shippingAddress
+        };
+
+        // Kullanıcının siparişlerine ekle
+        const userIndex = mockUsers.findIndex(u => u.id === user.id);
+        if (userIndex !== -1) {
+          mockUsers[userIndex].orders = [...mockUsers[userIndex].orders, newOrder];
+          
+          // State'i güncelle
+          setUser(prev => prev ? {
+            ...prev,
+            orders: [...prev.orders, newOrder]
+          } : null);
+        }
+
+        resolve({success: true, message: 'Sipariş başarıyla oluşturuldu', orderId});
+      }, 1000);
+    });
+  };
+
   const value = {
     user,
     isLoading,
@@ -485,6 +533,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     updateAddress,
     deleteAddress,
     forgotPassword,
+    createOrder,
   };
 
   return (
