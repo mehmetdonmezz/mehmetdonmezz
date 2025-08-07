@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawStore API Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #28a745;
+            background: #d4edda;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .endpoint-url {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐾 PawStore API Test Panel</h1>
+        
+        <!-- API Base URL Configuration -->
+        <div class="test-section">
+            <h3>🔧 API Configuration</h3>
+            <div class="input-group">
+                <label for="apiUrl">API Base URL:</label>
+                <input type="text" id="apiUrl" value="http://localhost:5000" placeholder="http://your-api-domain.com">
+            </div>
+        </div>
+
+        <!-- Health Check -->
+        <div class="test-section">
+            <h3>🏥 Health Check</h3>
+            <div class="endpoint-url">GET /api/health</div>
+            <button class="test-button" onclick="testHealthCheck()">Test Health Check</button>
+            <div id="health-result"></div>
+        </div>
+
+        <!-- Products API -->
+        <div class="test-section">
+            <h3>🛍️ Products API</h3>
+            <div class="endpoint-url">GET /api/products</div>
+            <button class="test-button" onclick="testGetProducts()">Get All Products</button>
+            <button class="test-button" onclick="testGetProduct()">Get Single Product</button>
+            <div id="products-result"></div>
+        </div>
+
+        <!-- Categories API -->
+        <div class="test-section">
+            <h3>📦 Categories API</h3>
+            <div class="endpoint-url">GET /api/categories</div>
+            <button class="test-button" onclick="testGetCategories()">Get All Categories</button>
+            <div id="categories-result"></div>
+        </div>
+
+        <!-- User Registration -->
+        <div class="test-section">
+            <h3>👤 User Registration</h3>
+            <div class="endpoint-url">POST /api/auth/register</div>
+            <div class="input-group">
+                <label>Email:</label>
+                <input type="email" id="regEmail" value="test@pawstore.com">
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" id="regPassword" value="Test123">
+            </div>
+            <div class="input-group">
+                <label>First Name:</label>
+                <input type="text" id="regFirstName" value="Test">
+            </div>
+            <div class="input-group">
+                <label>Last Name:</label>
+                <input type="text" id="regLastName" value="User">
+            </div>
+            <button class="test-button" onclick="testUserRegistration()">Register User</button>
+            <div id="register-result"></div>
+        </div>
+
+        <!-- User Login -->
+        <div class="test-section">
+            <h3>🔐 User Login</h3>
+            <div class="endpoint-url">POST /api/auth/login</div>
+            <div class="input-group">
+                <label>Email:</label>
+                <input type="email" id="loginEmail" value="test@pawstore.com">
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" id="loginPassword" value="Test123">
+            </div>
+            <button class="test-button" onclick="testUserLogin()">Login User</button>
+            <div id="login-result"></div>
+        </div>
+
+        <!-- Admin Login -->
+        <div class="test-section">
+            <h3>🔧 Admin Login</h3>
+            <div class="endpoint-url">POST /api/auth/admin/login</div>
+            <div class="input-group">
+                <label>Admin Email:</label>
+                <input type="email" id="adminEmail" value="admin@pawstore.com">
+            </div>
+            <div class="input-group">
+                <label>Admin Password:</label>
+                <input type="password" id="adminPassword" value="admin123">
+            </div>
+            <button class="test-button" onclick="testAdminLogin()">Login Admin</button>
+            <div id="admin-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function getApiUrl() {
+            return document.getElementById('apiUrl').value;
+        }
+
+        function displayResult(elementId, data, isError = false) {
+            const element = document.getElementById(elementId);
+            element.className = isError ? 'result error' : 'result';
+            element.textContent = JSON.stringify(data, null, 2);
+        }
+
+        async function testHealthCheck() {
+            try {
+                const response = await fetch(`${getApiUrl()}/api/health`);
+                const data = await response.json();
+                displayResult('health-result', data);
+            } catch (error) {
+                displayResult('health-result', { error: error.message }, true);
+            }
+        }
+
+        async function testGetProducts() {
+            try {
+                const response = await fetch(`${getApiUrl()}/api/products`);
+                const data = await response.json();
+                displayResult('products-result', data);
+            } catch (error) {
+                displayResult('products-result', { error: error.message }, true);
+            }
+        }
+
+        async function testGetProduct() {
+            try {
+                const response = await fetch(`${getApiUrl()}/api/products/1`);
+                const data = await response.json();
+                displayResult('products-result', data);
+            } catch (error) {
+                displayResult('products-result', { error: error.message }, true);
+            }
+        }
+
+        async function testGetCategories() {
+            try {
+                const response = await fetch(`${getApiUrl()}/api/categories`);
+                const data = await response.json();
+                displayResult('categories-result', data);
+            } catch (error) {
+                displayResult('categories-result', { error: error.message }, true);
+            }
+        }
+
+        async function testUserRegistration() {
+            try {
+                const userData = {
+                    email: document.getElementById('regEmail').value,
+                    password: document.getElementById('regPassword').value,
+                    firstName: document.getElementById('regFirstName').value,
+                    lastName: document.getElementById('regLastName').value
+                };
+
+                const response = await fetch(`${getApiUrl()}/api/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+                displayResult('register-result', data, !response.ok);
+            } catch (error) {
+                displayResult('register-result', { error: error.message }, true);
+            }
+        }
+
+        async function testUserLogin() {
+            try {
+                const loginData = {
+                    email: document.getElementById('loginEmail').value,
+                    password: document.getElementById('loginPassword').value
+                };
+
+                const response = await fetch(`${getApiUrl()}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(loginData)
+                });
+
+                const data = await response.json();
+                displayResult('login-result', data, !response.ok);
+            } catch (error) {
+                displayResult('login-result', { error: error.message }, true);
+            }
+        }
+
+        async function testAdminLogin() {
+            try {
+                const adminData = {
+                    email: document.getElementById('adminEmail').value,
+                    password: document.getElementById('adminPassword').value
+                };
+
+                const response = await fetch(`${getApiUrl()}/api/auth/admin/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(adminData)
+                });
+
+                const data = await response.json();
+                displayResult('admin-result', data, !response.ok);
+            } catch (error) {
+                displayResult('admin-result', { error: error.message }, true);
+            }
+        }
+
+        // Auto-test on page load
+        window.onload = function() {
+            console.log('🧪 PawStore API Test Panel Loaded');
+            console.log('📡 API URL:', getApiUrl());
+        };
+    </script>
+</body>
+</html>
