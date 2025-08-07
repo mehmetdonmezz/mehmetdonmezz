@@ -128,6 +128,54 @@ export default function ProfilePage() {
           </div>
         </div>
 
+        {/* Profile Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <a 
+            href="/profile/edit" 
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                <span className="text-blue-600 text-xl">✏️</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Profil Düzenle</h3>
+                <p className="text-sm text-gray-600">Bilgilerinizi güncelleyin</p>
+              </div>
+            </div>
+          </a>
+
+          <a 
+            href="/profile/change-password" 
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                <span className="text-orange-600 text-xl">🔐</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Şifre Değiştir</h3>
+                <p className="text-sm text-gray-600">Hesabınızı güvende tutun</p>
+              </div>
+            </div>
+          </a>
+
+          <a 
+            href="/profile/addresses" 
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                <span className="text-green-600 text-xl">📍</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Adres Yönetimi</h3>
+                <p className="text-sm text-gray-600">Teslimat adreslerinizi düzenleyin</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
         {/* Profile Sections */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Personal Info */}
