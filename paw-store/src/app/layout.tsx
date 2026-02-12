@@ -1,0 +1,46 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { CartProvider } from "@/context/CartContext";
+import { AdminProvider } from "@/context/AdminContext";
+import { ProductProvider } from "@/context/ProductContext";
+import { UserProvider } from "@/context/UserContext";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "PawStore - Evcil Hayvan Ürünleri",
+  description: "Köpek, kedi, kuş ve diğer evcil hayvanlarınız için kaliteli ürünler. Hızlı teslimat ve güvenli alışveriş.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="tr">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <UserProvider>
+          <ProductProvider>
+            <AdminProvider>
+              <CartProvider>
+                {children}
+              </CartProvider>
+            </AdminProvider>
+          </ProductProvider>
+        </UserProvider>
+      </body>
+    </html>
+  );
+}
